@@ -2,18 +2,18 @@
 
 \mode<presentation> {
 
-%\usetheme{CambridgeUS} %%
+\usetheme{CambridgeUS} %%
 %\usetheme{Darmstadt} %%
-\usetheme{Madrid}
+%\usetheme{Madrid}
 
 % To remove the footer line in all slides uncomment this line
 %\setbeamertemplate{footline}
 
 % To replace the footer line in all slides with a simple slide count uncomment this line
-%\setbeamertemplate{footline}[page number] 
+%\setbeamertemplate{footline}[page number]
 
 % To remove the navigation symbols from the bottom of all slides uncomment this line
-%\setbeamertemplate{navigation symbols}{} 
+%\setbeamertemplate{navigation symbols}{}
 }
 
 \usepackage{graphicx} % Allows including images
@@ -24,15 +24,17 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Stage L3 FEMTO-ST]{\'Etude des centrales inertielles libres pour microdrones } % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Projet Micro\'electronique 2A SEI]{Projet de Conception en Micro\'electronique Analogique \\ R\'ealisation d'un CAN FLASH 6 bits }
+% The short title appears at the bottom of every slide, the full title is only on the title page
 %\subtitle{Test}
 
-\author{Mohamed Hage Hassan} % Your name
-\institute[UFC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\author{F. Goumis, M. Hage Hassan} % Your name
+\institute[Phelma] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Universit\'e de Franche-Comt\'e \\ % Your institution for the title page
+Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title page
 \medskip
-\textit{mohamed.hagehassan@femto-st.fr} % Your email address
+\textit{mohamed.hage-hassan@phelma.grenoble-inp.fr}\\ % Your email address
+\textit{ferdinand.goumis@phelma.grenoble-inp.fr}
 }
 
 \date{\today} % Date, can be changed to a custom date
@@ -48,32 +50,17 @@ Universit\'e de Franche-Comt\'e \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{First Section} % Sections can be created in order to organize your presentation into
+% discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme
+%to further break down your presentation into chunks
 
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{Introduction}
-
-\begin{enumerate}
-\item Capteurs passifs : Axe de recherche dans l'\'equipe Cosyma
-
-\begin{figure}
-\includegraphics[width=0.375\linewidth]{Capteur_passif3}
-\includegraphics[width=0.4\linewidth]{Capteur_passif}
-
-\end{figure}
 
 
-\item Interrogateur de type RADAR impulsionnel \`a balayage de fr\'equence \`a 2 m\`etres de port\'ee
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
 
 \begin{frame}
 \frametitle{D\'emarches}
@@ -81,12 +68,6 @@ Universit\'e de Franche-Comt\'e \\ % Your institution for the title page
 \begin{enumerate}
 
 \item Interrogateur  + vecteur de vol mobile : Automatisation de la proc\'edure de mesure des capteurs
-	\begin{figure}
-	
-		\includegraphics[width=0.5\linewidth]{Drone_pont1}
-		\includegraphics[width=0.442\linewidth]{Drone}
-
-	\end{figure}
 
 \item Impr\'ecision GPS : positionnement \`a 5 m pr\'es d'un capteur
 \item Objectifs : Autonomie de d\'ecision + asservissement de la position du drone
@@ -95,326 +76,6 @@ Universit\'e de Franche-Comt\'e \\ % Your institution for the title page
 
 \end{frame}
 
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Autopilote Pixhawk, PX4 et MAVLink}
-
-\begin{enumerate}
-
-\item Pixhawk : Centrale inertielle bas\'ee sur STM32F427
-	\begin{figure}
-	
-		\includegraphics[width=0.3\linewidth]{pixhawk}
-	
-	\end{figure}
-\item PX4 : Logiciel du contr\^ole de vol, tournant sous NuttX
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{M\'ethodes du contr\^ole}
-
-\begin{enumerate}
-
-\item Contr\^ole du drone \`a partir de 2 choix possibles : 
-			\begin{itemize}
-				\item Application interne (\`a travers uORB) 
-				\item Protocole de communication externe (avec MAVLink) (robustesse)
-			\end{itemize}
-
-\item C-UART Interface : Example d'utilisation du protocol MAVLink pour une commande externe
-	  
-	  Caract\'eristiques :
-	  \begin{itemize}
-		\item mutli-t\^ache
-		\item d\'ependant d'un syst\`eme de type *nix
-	   \end{itemize}
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{M\'ethodologie suivie}
-
-\begin{enumerate}
-
-\item Essais du code non-modifi\'e sur la simulation du drone 
-\item Modification du code pour STM32F4 et essais sur la simulation
-\item Essais du code sur un drone r\'eel \`a partir d'un Linux
-\item Tests de l'interface sur le m\^eme drone depuis une STM32F4 
-\item Int\'egration d'un capteur embarqu\'e 
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Contr\^ole du drone virtuel avec MAVLink}
-
-Essai de l'interface C-UART non-modifi\'ee sur la simulation
-
-\begin{enumerate}
-
-\item Simulation du comportement du drone r\'eel avec le logiciel PX4
-	\begin{figure}
-	
-		\includegraphics[width=0.7\linewidth]{Simulation_linux}
-	
-	\end{figure}
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Contr\^ole du drone virtuel avec MAVLink sur STM32F4}
-
-\begin{enumerate}
-
-\item On d\'esire simuler un sc\'enario pr\'e-d\'efini dans l'interface en premier temps
-	\begin{figure}
-	
-		\includegraphics[width=0.9\linewidth]{sequence_vol}
-	
-	\end{figure}
-
-\item Modification de l'interface C-UART apr\`es plusieurs recherches
-	  \begin{itemize}
-		\item Passage d'une ex\'ecution multi-t\^ache en s\'equentielle : Insertion des interruptions mat\'eriels (timer, USART)
-		\item \'Elimination de la d\'ependance d'un syst\`eme d'exploitation
-	   \end{itemize}
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-	
-	\frametitle{Demo de Simulation}
-
-	\movie [label = cells, width = 1\linewidth, height = 0.475\linewidth, poster, duration=42s]{Demo de Simulation}{simulation.ogv}	
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Contr\^ole du drone r\'eel avec MAVLink depuis un Linux}
-
-\begin{enumerate}
-
-\item Configuration du drone avec QGroundControl
-
-	\begin{figure}
-	
-		\includegraphics[width=1\linewidth]{QGroundcontrol}
-	
-	\end{figure}
-
-\item Tests de s\'equences de vol
-\item Probl\`eme rencontr\'e : Certaines commandes de contr\^ole ne sont pas interpr\'et\'es par la pixhawk
-
-
-\end{enumerate}
-
-
-\end{frame}
-
-%------------------------------------------------
-
-
-\begin{frame}
-
-\frametitle{Test de s\'equence de vol}
-
-\movie [label = cells, width = 1\linewidth, height = 0.55\linewidth, poster, duration=59s]{Demo de s\'equence de vol}{Sequence_vol.mp4}	
-
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Contr\^ole du drone r\'eel avec MAVLink depuis la STM32F4}
-
-
-\begin{enumerate}
-\item Introduction des m\'ecanismes d'acquittement
-
-\item S\'equence de vol avec une impl\'ementation d'un capteur embarqu\'e
-	\begin{figure}
-	
-		\includegraphics[width=1\linewidth]{sequence_vol_capteur}
-	
-	\end{figure}
-
-\end{enumerate}
-
-\end{frame}
-
-
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Contr\^ole du drone r\'eel avec MAVLink depuis la STM32F4}
-
-Contr\^ole du drone \`a partir d'un capteur (acc\'el\`erom\`etre LIS3DSH)
-
-\begin{figure}
-\includegraphics[width=0.7\linewidth]{flight_control}
-\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
-
-
-\begin{frame}
-
-\frametitle{Contr\^ole avec un capteur embarqu\'e}
-
-\movie [label = cells, width = 1\linewidth, height = 0.55\linewidth, poster, duration=52s]{Demo du contr\^ole avec un capteur embarqu\'e}{Sequence_capteur.mp4}	
-
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Conclusions}
-
-R\'eussite \`a accomplir le cahier de charge :
-
-\begin{itemize}
-
-\item \'Execution d'un sc\'enario autonome \`a partir d'un calculateur externe
-\item Contr\^oler le drone \`a partir d'un capteur embarqu\'e.
-
-\end{itemize}
-
-M\'ethode MAVLink : Communication entre deux microprocesseurs
-
-\begin{enumerate}
-
-\item Risque de d\'efaillance de communication 
-\item Augmentation du poids du drone + interrogateur
-
-\end{enumerate} 
-
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Perspective}
-
-
-Une autre solution propos\'ee : Contr\^ole \`a partir d'un seul microprocesseur
-\begin{enumerate}
-
-\item uORB (micro Object Request Broker) : moyen de communication interprocessus
-\item Application PX4/NuttX pour le contr\^ole du drone 
-	\begin{figure}
-	
-		\includegraphics[width=0.7\linewidth]{MControl}
-	
-	\end{figure}
-
-\end{enumerate}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-
-	\frametitle{}
-
-	\Huge{\centerline{Annexes}}
-
-\end{frame}
-
-\begin{frame}
-
-	\frametitle{Structure interne de l'interface C-UART}
-
-	\begin{figure}
-
-		\includegraphics[width=0.6\linewidth]{Sinterface1}
-
-	\end{figure}
-
-\end{frame}
-
-\begin{frame}
-
-	\frametitle{Structure interne de l'interface C-UART}
-	
-	\begin{figure}
-
-		\includegraphics[width=0.6\linewidth]{Sinterface2}
-
-	\end{figure}
-
-\end{frame}
-
-\begin{frame}
-
-	\frametitle{Structure interne de l'interface C-UART}
-
-	\begin{figure}
-	
-		\includegraphics[width=0.6\linewidth]{Sinterface3}
-	
-	\end{figure}
-
-\end{frame}
-
-\begin{frame}
-
-	\frametitle{Structure interne de l'interface C-UART}
-
-	\begin{figure}
-	
-		\includegraphics[width=0.6\linewidth]{SinterfaceC}
-	
-	\end{figure}
-
-\end{frame}
-
-\begin{frame}
-	
-	\frametitle{Structure interne de l'application sur PX4/NuttX}
-
-	\begin{figure}
-	
-		\includegraphics[width=0.7\linewidth]{MControl}
-	
-	\end{figure}
-
-\end{frame}
-
-
 
 
 \end{document}
-
-
-
-
-
-
