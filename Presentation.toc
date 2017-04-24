@@ -1,3 +1,9 @@
 \beamer@endinputifotherversion {3.33pt}
-\beamer@sectionintoc {1}{First Section}{2}{0}{1}
-\beamer@subsectionintoc {1}{1}{Subsection Example}{2}{0}{1}
+\beamer@sectionintoc {1}{Cahier des charges}{3}{0}{1}
+\beamer@sectionintoc {2}{Mise en place de l'\'echantillonneur-bloqueur}{4}{0}{2}
+\beamer@sectionintoc {3}{R\'ealisation d'un Amplificateur OTA \`a deux \'etages}{9}{0}{3}
+\beamer@sectionintoc {4}{Mise en oeuvre des comparateurs synchronis\'es par horloge}{13}{0}{4}
+\beamer@sectionintoc {5}{R\'ealisation du d\'ecodeur en Verilog}{17}{0}{5}
+\beamer@sectionintoc {6}{Sch\'ema Global}{18}{0}{6}
+\beamer@sectionintoc {7}{Layout}{19}{0}{7}
+\beamer@sectionintoc {8}{Conclusion/Am\'eliorations possibles}{20}{0}{8}
