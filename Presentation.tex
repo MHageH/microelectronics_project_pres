@@ -116,16 +116,15 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \begin{frame}
 \frametitle{R\'ealisation des switchs}
 
-\textbf{Addition des trucs}
-
 \begin{columns}[T]
   \column{0.4\textwidth}
   \begin{itemize}
-    \item[-] Une r\'esolution du CAN-FLASH de 6 bits\\ce qui implique l'utilisation de $2^{6} -1 = 63 $ comparateurs.
+    \item[] $R_{ON_{(N)}} = \frac{1}{2k_n \frac{W}{L} (V_{GS} - V_{tn})}$
+    \item[] $R_{ON_{(P)}} = \frac{1}{2k_p \frac{W}{L} (V_{SG} - V_{tp})}$
   \end{itemize}
-  \includegraphics[width=0.9\linewidth]{switch_fonct.png}
+  \includegraphics[width=\linewidth]{switch_fonct.png}
 
-  \column{0.6\textwidth}
+  \column{0.5\textwidth}
   \hspace*{-0.5cm}
   \includegraphics[width=\linewidth]{switchs_.png}
 \end{columns}
@@ -138,7 +137,7 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \frametitle{Simuation des switchs}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.7\linewidth]{switchs_simu.png}
+  \includegraphics[width=0.9\linewidth]{switchs_simu.png}
   \caption{Simulation des switchs en CMOS}
 \end{figure}
 
@@ -150,8 +149,8 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \frametitle{Sch\'ema r\'eel}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.7\linewidth]{EB-Schematic.png}
-  \caption{Simulation des switchs en CMOS}
+  \includegraphics[width=0.8\linewidth]{EB-Schematic.png}
+  \caption{Sch\'ema global de l'\'echantillonneur bloqueur}
 \end{figure}
 
 \end{frame}
@@ -164,10 +163,18 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \begin{frame}
 \frametitle{Fonctionnement}
 
-\begin{figure}[!htb]
-  \includegraphics[width=0.7\linewidth]{amplificateur_.png}
-  \caption{Simulation des switchs en CMOS}
-\end{figure}
+\begin{columns}[T]
+  \column{0.4\textwidth}
+  \begin{itemize}
+    \item[-] $V_{dd} = 3.3 V$
+    \item[-] Dynamique en entr\'ee : $V_e \in [0.5; 2.5V]$
+    \item[-] Gain : $G(0) > 300$
+  \end{itemize}
+
+  \column{0.6\textwidth}
+  \hspace*{-0.5cm}
+  \includegraphics[width=\linewidth]{amplificateur_.png}
+\end{columns}
 
 \end{frame}
 
@@ -196,10 +203,10 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Simulation final de l'Echantillonneur bloqueur}
+\frametitle{Simulation finale de l'Echantillonneur bloqueur}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.8\linewidth]{echantillonneur_bloqueur_sim_reelle.png}
+  \includegraphics[width=0.9\linewidth]{echantillonneur_bloqueur_sim_reelle.png}
   \caption{Simulation finale}
 \end{figure}
 
@@ -213,7 +220,7 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 
 \begin{figure}[!htb]
   \includegraphics[width=0.8\linewidth]{comparateur_schema.jpg}
-  \caption{Simulation finale}
+  \caption{Structures des comparateurs}
 \end{figure}
 
 \end{frame}
@@ -224,8 +231,8 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \frametitle{Simulation}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.8\linewidth]{simu_comp_pas_ameliore.png}
-  \caption{Simulation finale}
+  \includegraphics[width=0.9\linewidth]{simu_comp_pas_ameliore.png}
+  \caption{Simulation initiale des comparateurs}
 \end{figure}
 
 \end{frame}
@@ -236,7 +243,7 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \frametitle{Modification n\'ecessaires}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.8\linewidth]{comparateur_schema_cadence_SR.png}
+  \includegraphics[width=0.9\linewidth]{comparateur_schema_cadence_SR.png}
   \caption{Addition des buffers et Bascules SR}
 \end{figure}
 
@@ -248,8 +255,8 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \frametitle{Simulation apr\`es modifications}
 
 \begin{figure}[!htb]
-  \includegraphics[width=0.8\linewidth]{sim_comp_after_SR_FF.jpg}
-  \caption{Addition des buffers et Bascules SR}
+  \includegraphics[width=0.9\linewidth]{sim_comp_after_SR_FF.jpg}
+  \caption{Simulation des comparateurs apr\`es modification}
 \end{figure}
 
 \end{frame}
@@ -264,6 +271,9 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
   \includegraphics[width=0.8\linewidth]{test_thermo2bin.png}
   \caption{Test du codeur thermometrique}
 \end{figure}
+
+Conversion d'un code thermometrique en binaire avec une capacit\'e de correction
+de bulles.
 
 \end{frame}
 
@@ -300,17 +310,19 @@ Institut Polytechnique de Grenoble - Phelma\\ % Your institution for the title p
 \section{Layout}
 
 \begin{frame}
+\frametitle{Layout du switch}
 
-\begin{figure}[!htb]
-  \includegraphics[width=0.8\linewidth]{layout_.png}
-  \caption{Layout du switch}
-\end{figure}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \includegraphics[width=\linewidth]{switchs_.png}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\linewidth]{layout_.png}
+  \end{columns}
 
 \end{frame}
 
 %------------------------------------------------
-
-\section{Layout}
 
 \begin{frame}
 
